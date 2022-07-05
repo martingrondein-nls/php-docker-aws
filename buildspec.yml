@@ -9,11 +9,14 @@ phases:
     pre_build:
         commands:
             - echo "we are in the pre build phase"
+            - echo "we should probably .zip up the projects contents from Github around here into an artefact / S3 bucket"
     build:
         commands:
             - echo "we are in the build block"
-            - echo "we will run some tests..."
-            - echo "all done."
+            - echo "we should probably unzip the projects contents into the artifact/S3 bucket"
     post_build:
         commands:
             - echo "we are in the post build phase"
+            - echo "we should run some tests here..."
+            - echo "tests all done."
+            - echo "maybe push a notification to Slack/Teams from here that the build process is done"
