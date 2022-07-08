@@ -13,7 +13,6 @@ phases:
     build:
         commands:
             - echo Running build step commands...
-            - cd /home/ec2-user
             - echo Build started on `date`
             - docker-compose up -d --build
     post_build:
