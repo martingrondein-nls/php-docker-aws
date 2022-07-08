@@ -2,21 +2,21 @@ version: 0.2
 
 phases:
     install:
-        runtime-versions:
-            nodejs: latest
         commands:
-            - echo "installing something"
+            - echo Running install step commands...
+            - echo Configuring Docker...
+            - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2 &
+            - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"
     pre_build:
         commands:
-            - echo "we are in the pre build phase"
-            - echo "we should probably .zip up the projects contents from Github around here into an artefact / S3 bucket"
+            - echo Running prebuild step commands...
     build:
         commands:
-            - echo "we are in the build block"
-            - echo "we should probably unzip the projects contents into the artifact/S3 bucket"
+            - echo Running build step commands...
+            - cd /home/ec2-user
+            - echo Build started on `date`
+            - docker-compose up -d --build
     post_build:
         commands:
-            - echo "we are in the post build phase"
-            - echo "we should run some tests here..."
-            - echo "tests all done."
-            - echo "maybe push a notification to Slack/Teams from here that the build process is done"
+            - echo Running post build step commands...
+            - echo Build completed on `date`

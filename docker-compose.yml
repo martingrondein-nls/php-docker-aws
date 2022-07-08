@@ -19,7 +19,10 @@ services:
 
   # --- PHP container: Project files
   php:
-    image: 161262460333.dkr.ecr.eu-west-2.amazonaws.com/demomartin:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: php:latest
     container_name: ${PROJECT_NAME}-php
     restart: unless-stopped
     tty: true
