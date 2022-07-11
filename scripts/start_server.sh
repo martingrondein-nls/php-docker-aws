@@ -1,2 +1,2 @@
 #!/bin/bash
-systemctl start docker.service
+# systemctl start docker.service
