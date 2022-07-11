@@ -1,3 +1,3 @@
 #!/bin/bash
-systemctl start docker.service
+sudo service docker start
 docker-compose up -d --build
