@@ -24,6 +24,6 @@ phases:
             # - echo Uploading to S3...
             # - aws s3 cp release.zip s3://martin-deployments/release.zip --region eu-west-2
             - echo Build completed on `date`
-    artifacts:
-        files:
-            - '**/*'
+artifacts:
+    files:
+        - '**/*'
