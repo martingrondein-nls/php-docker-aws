@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R 755 /var/www/
+sudo chmod -R 755 /var/www/
