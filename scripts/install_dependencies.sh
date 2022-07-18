@@ -3,7 +3,7 @@ yum update -y
 # install docker
 sudo amazon-linux-extras install docker
 # other dependencies
-sudo yum install iptables-services
+sudo yum install iptables-services amazon-ecr-credential-helper
 # attempt to start docker
 sudo service docker start
 # install docker-compose
