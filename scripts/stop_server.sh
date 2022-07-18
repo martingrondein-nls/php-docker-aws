@@ -2,7 +2,7 @@
 # cd into the active working directory on the ec2 instance
 cd /var/www
 # bring down the running images
-sudo docker-compose down
+docker-compose down
 # check for and then stop the docker service
 isExistApp=pgrep docker
 if [[ -n $isExistApp ]]; then
