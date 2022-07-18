@@ -19,10 +19,7 @@ services:
 
   # --- PHP container: Project files
   php:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: php:latest
+    image: ${APP_REGISTRY}:${APP_VER}
     container_name: ${PROJECT_NAME}-php
     restart: unless-stopped
     tty: true
