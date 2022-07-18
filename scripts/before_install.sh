@@ -14,3 +14,10 @@ sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
 # check docker info
 docker info
+# environment specific steps
+if [ "$DEPLOYMENT_GROUP_NAME" == "Staging" ]
+then
+   # do staging only stuff here
+   EXPORT ECR_REGISTRY=161262460333.dkr.ecr.eu-west-2.amazonaws.com/martin-ecr
+   EXPORT ECR_VER=latest
+fi

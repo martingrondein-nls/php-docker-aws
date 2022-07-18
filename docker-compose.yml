@@ -4,8 +4,8 @@ services:
 
   # --- Webserver: Nginx
   nginx:
-    image: nginx:${NGINX_VER}
-    container_name: ${PROJECT_NAME}-nginx
+    image: nginx:1.23.0-alpine
+    container_name: ${APPLICATION_NAME}-nginx
     restart: unless-stopped
     tty: true
     ports:
@@ -19,8 +19,8 @@ services:
 
   # --- PHP container: Project files
   php:
-    image: ${APP_REGISTRY}:${APP_VER}
-    container_name: ${PROJECT_NAME}-php
+    image: ${ECR_REGISTRY}:${ECR_VER}
+    container_name: ${APPLICATION_NAME}-php
     restart: unless-stopped
     tty: true
     working_dir: /var/www
@@ -33,12 +33,12 @@ services:
 
   # --- Database: MariaDB
   db:
-    image: mariadb:${MARIADB_VER}
-    container_name: ${PROJECT_NAME}-db
+    image: mariadb:10.6.8
+    container_name: ${APPLICATION_NAME}-db
     restart: unless-stopped
     tty: true
     ports:
-      - ${DB_PORT}:3306
+      - 3306:3306
     environment:
       MYSQL_ROOT_USER: 'root'
       MYSQL_ROOT_PASSWORD: 'root'

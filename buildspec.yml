@@ -1,5 +1,9 @@
 version: 0.2
-
+env:
+  variables:
+    ECR_URL: 161262460333.dkr.ecr.eu-west-2.amazonaws.com
+    ECR_REPO: martin-ecr
+    ECR_TAG: latest
 phases:
     install:
         commands:
@@ -8,20 +12,20 @@ phases:
         commands:
             - echo Step 2/4 - Running prebuild step commands...
             - echo Logging in to Amazon ECR...
-            - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+            - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_URL
     build:
         commands:
             - echo Step 3/4 - Running build step commands...
             - echo Build started on `date`
             - echo Building the Docker image...
-            - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+            - docker build -t $ECR_URL/$ECR_REPO:$ECR_TAG .
             - echo Tagging the Docker image...
-            - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+            - docker tag $ECR_REPO:$ECR_TAG $ECR_URL/$ECR_REPO:$ECR_TAG
     post_build:
         commands:
             - echo Step 4/4 - Running post build step commands...
             - echo Pushing the Docker to ECR image...
-            - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+            - docker push $ECR_URL/$ECR_REPO:$ECR_TAG
             - echo Build completed on `date`
 artifacts:
     files:
