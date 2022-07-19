@@ -16,7 +16,9 @@ Please specfify the following variables in AWS:
   - hosted instance
 - AWS S3
   - for artifact store
-- AWS ECR
+- AWS KMS (Key Management Service)
+  - for storing/retrieving secure credentials
+- AWS ECR (Amazon Elastic Container Registry)
   - for Docker image store
 - AWS CodeBuild
   - for building and pushing to ECR
@@ -26,3 +28,11 @@ Please specfify the following variables in AWS:
   - for deploying to EC2 instance
 - AWS CodePipeline
   - for managing the above
+
+## Using KMS
+
+Set a value:
+```aws --region=eu-west-2 ssm put-parameter --name "VARIABLE-NAME-GOES-HERE" --value 'VARIABLE-VALUE' --type SecureString --key-id alias/NAME-OF-KMS-ALIAS```
+
+Get a value:
+```aws --region=eu-west-2 ssm get-parameters --name "VARIABLE-NAME-GOES-HERE" --with-decryption --output text --query Parameters[*].Value```

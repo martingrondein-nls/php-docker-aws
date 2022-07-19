@@ -17,7 +17,5 @@ docker info
 # environment specific steps
 if [ "$DEPLOYMENT_GROUP_NAME" == "Staging" ]
 then
-   # do staging only stuff here
-   export ECR_REGISTRY=161262460333.dkr.ecr.eu-west-2.amazonaws.com/martin-ecr >> /etc/environment
-   export ECR_VER=latest >> /etc/environment
+   source ./import-params.sh
 fi
