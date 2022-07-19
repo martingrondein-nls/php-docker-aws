@@ -20,6 +20,6 @@ then
     ECR_REGISTRY=$(aws --region=eu-west-2 ssm get-parameters --name "ecr-registry" --with-decryption --output text --query Parameters[*].Value)
     ECR_VER=$(aws --region=eu-west-2 ssm get-parameters --name "ecr-ver" --with-decryption --output text --query Parameters[*].Value)
 
-    echo "ECR_REGISTRY=$ECR_REGISTRY" | sudo tee /etc/profile.d/aws_kms.sh
-    echo "ECR_VER=$ECR_VER" | sudo tee  -a /etc/profile.d/aws_kms.sh
+    echo "export ECR_REGISTRY=$ECR_REGISTRY" | sudo tee /etc/profile.d/aws_kms.sh
+    echo "export ECR_VER=$ECR_VER" | sudo tee  -a /etc/profile.d/aws_kms.sh
 fi
