@@ -22,7 +22,4 @@ then
     echo "export ECR_REGISTRY=$ECR_REGISTRY" | sudo tee /etc/profile.d/aws_kms.sh
     echo "export ECR_VER=$ECR_VER" | sudo tee  -a /etc/profile.d/aws_kms.sh
     echo "export APP_NAME=$APPLICATION_NAME" | sudo tee  -a /etc/profile.d/aws_kms.sh
-
-    cd /etc/profile.d
-    source ./aws_kms.sh
 fi

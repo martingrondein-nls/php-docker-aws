@@ -1,5 +1,7 @@
 #!/bin/bash
 sudo service docker start
+cd /etc/profile.d
+source ./aws_kms.sh
 cd /var/www
 # Login to the AWS ECR
 (aws ecr get-login --region eu-west-2)
