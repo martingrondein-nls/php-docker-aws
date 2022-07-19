@@ -17,6 +17,5 @@ docker info
 # environment specific steps
 if [ "$DEPLOYMENT_GROUP_NAME" == "Staging" ]
 then
-  ECR_REGISTRY=$(aws --region=eu-west-2 ssm get-parameters --name "ecr-registry" --with-decryption --output text --query Parameters[*].Value)
-  ECR_VER=$(aws --region=eu-west-2 ssm get-parameters --name "ecr-ver" --with-decryption --output text --query Parameters[*].Value)
+    sh ./import_params.sh
 fi
