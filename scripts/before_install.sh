@@ -15,6 +15,7 @@ sudo usermod -aG docker ec2-user
 # check docker info
 docker info
 # environment specific steps
+# staging
 if [ "$DEPLOYMENT_GROUP_NAME" == "Staging" ]
 then
     ECR_REGISTRY=$(aws --region=eu-west-2 ssm get-parameters --name "ecr-registry" --with-decryption --output text --query Parameters[*].Value)
@@ -22,4 +23,11 @@ then
 
     echo "export ECR_REGISTRY=$ECR_REGISTRY" | sudo tee /etc/profile.d/aws_kms.sh
     echo "export ECR_VER=$ECR_VER" | sudo tee  -a /etc/profile.d/aws_kms.sh
+
+    source /etc/profile.d/aws_kms.sh
+fi
+# production
+if [ "$DEPLOYMENT_GROUP_NAME" == "Production" ]
+then
+   # production specific commands here
 fi
