@@ -5,5 +5,3 @@ cd /var/www
 (aws ecr get-login --region eu-west-2)
 # Start everything but the DB container
 docker-compose up -d nginx php
-# Cleanup
-sudo rm -rf /etc/profile.d/aws_kms.sh

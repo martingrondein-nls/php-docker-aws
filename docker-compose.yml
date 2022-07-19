@@ -5,7 +5,7 @@ services:
   # --- Webserver: Nginx
   nginx:
     image: nginx:1.23.0-alpine
-    container_name: ${APPLICATION_NAME}-nginx
+    container_name: ${APP_NAME}-nginx
     restart: unless-stopped
     tty: true
     ports:
@@ -20,7 +20,7 @@ services:
   # --- PHP container: Project files
   php:
     image: ${ECR_REGISTRY}:${ECR_VER}
-    container_name: ${APPLICATION_NAME}-php
+    container_name: ${APP_NAME}-php
     restart: unless-stopped
     tty: true
     working_dir: /var/www
@@ -34,7 +34,7 @@ services:
   # --- Database: MariaDB
   db:
     image: mariadb:10.6.8
-    container_name: ${APPLICATION_NAME}-db
+    container_name: ${APP_NAME}-db
     restart: unless-stopped
     tty: true
     ports:
