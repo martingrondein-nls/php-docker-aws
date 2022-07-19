@@ -12,8 +12,6 @@ sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-c
 sudo systemctl enable docker
 # don’t forget to add your ec2-user to the docker group
 sudo usermod -aG docker ec2-user
-# check docker info
-docker info
 # environment specific steps
 # staging
 if [ "$DEPLOYMENT_GROUP_NAME" == "Staging" ]
