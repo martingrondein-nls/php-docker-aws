@@ -16,7 +16,7 @@ Please specfify the following variables in AWS:
   - hosted instance
 - AWS S3
   - for artifact store
-- AWS KMS (Key Management Service)
+- AWS KMS (Key Management Service) & Parameter Store
   - for storing/retrieving secure credentials
 - AWS ECR (Amazon Elastic Container Registry)
   - for Docker image store

@@ -17,5 +17,6 @@ docker info
 # environment specific steps
 if [ "$DEPLOYMENT_GROUP_NAME" == "Staging" ]
 then
-   source /var/www/scripts/import_params.sh
+  APP_REGISTRY=$(aws --region=eu-west-2 ssm get-parameters --name "ecr-registry" --with-decryption --output text --query Parameters[*].Value)
+  APP_VER=$(aws --region=eu-west-2 ssm get-parameters --name "ecr-ver" --with-decryption --output text --query Parameters[*].Value)
 fi
