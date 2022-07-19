@@ -26,8 +26,3 @@ then
 
     source /etc/profile.d/aws_kms.sh
 fi
-# production
-if [ "$DEPLOYMENT_GROUP_NAME" == "Production" ]
-then
-   # production specific commands here
-fi
