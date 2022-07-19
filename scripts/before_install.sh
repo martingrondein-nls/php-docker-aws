@@ -17,6 +17,6 @@ docker info
 # environment specific steps
 if [ "$DEPLOYMENT_GROUP_NAME" == "Staging" ]
 then
-   pwd
-   source import_params.sh
+   cd /var/www
+   source scripts/import_params.sh
 fi
