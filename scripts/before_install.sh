@@ -17,5 +17,6 @@ docker info
 # environment specific steps
 if [ "$DEPLOYMENT_GROUP_NAME" == "Staging" ]
 then
-   source ./import-params.sh
+   pwd
+   source import_params.sh
 fi
