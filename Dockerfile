@@ -1,4 +1,4 @@
-FROM php:8.1.7-fpm-alpine3.16
+FROM php:8.2.0RC4-fpm-alpine3.16
 
 # Set Composer version to install - https://getcomposer.org/download/
 ARG COMPOSER_VERSION="2.3.7"
